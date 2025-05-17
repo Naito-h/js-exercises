@@ -1,0 +1,35 @@
+予想
+    answer: 42
+    answer: 0
+が表示される
+
+結果
+    Object
+        answer: 0
+        [[Prototype]]: Object
+    Object
+        answer: 0
+        [[Prototype]]: Object
+が表示された
+
+
+開発者ツールを開いた状態のタブでHTMLを開いた場合
+    {answer: 42}
+        answer: 0
+        [[Prototype]]: Object
+    {answer: 0}
+        answer: 0
+        [[Prototype]]: Object
+
+HTMLを開いた状態のタブで開発者ツールを開いた場合
+    Object
+        answer: 0
+        [[Prototype]]: Object
+    Object
+        answer: 0
+        [[Prototype]]: Object
+
+
+常に期待した結果を得るためにはどのようにコードを修正するべきか
+・letは使わずにconstで定数として定義する
+・"answer2"など別のプロパティとして定義する
