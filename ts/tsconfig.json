@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     // package.jsonでtype: "module"を指定しているので、出力されるJSのモジュール形式がES Moduleになる
-    "module": "Node16",
+    // "module": "Node16",
+    "module": "ESNext",
     // Nodeがimportはimportのモジュール解決方式、requireはrequireのモジュール解決方式を使う
     "moduleResolution": "Node16",
     // 型チェックが厳密になる。JSのプロジェクトに徐々に導入するのではなく最初からTSで始める場合、基本有効にする
@@ -18,7 +19,9 @@
     "allowImportingTsExtensions": true,
     // デフォルトエクスポートが設定されていないモジュールに対して、
     // import React from "react"; のようなインポートを許可する
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "allowJs": true,
   },
   // package.jsonでtype: "module"を指定しているので、ts-nodeで実行する場合もesmである必要がある
   "ts-node": {
