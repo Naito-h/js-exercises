@@ -50,7 +50,7 @@ class Histogram {
     entries = entries.filter((entry) => entry[1] >= 1);
 
     let lines = entries.map(
-      ([l, n]) => `${l}: ${"#".repeat(Math.round(n))} ${n.toFixed(2)}%`,
+      ([l, n]) => `${l}: ${"#".repeat(Math.round(n))} ${n.toFixed(2)}%`
     );
 
     return lines.join("\n");
