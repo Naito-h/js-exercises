@@ -16,7 +16,7 @@
     // "inlineSourcemap"はソースマップを本体のJSと同じファイルに埋め込む。
     "inlineSourceMap": true,
     // import { x } from "./foo.ts" を許可する
-    "allowImportingTsExtensions": true,
+    // "allowImportingTsExtensions": true,
     // デフォルトエクスポートが設定されていないモジュールに対して、
     // import React from "react"; のようなインポートを許可する
     "allowSyntheticDefaultImports": true,
