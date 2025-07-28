@@ -1,16 +1,24 @@
-function newHashTable(capacity: number) {
+export function newHashTable(capacity: number) {
   return {
     size: 0, // マッピング数を示すプロパティ
     entries: new Array(capacity), // マッピングを格納する固定長の配列
-    get(key: string) {
+    get(key: any) {
       // keyにマップされた値を取得する
-        const index = this.entries.findIndex(entry => entry && entry.key === key);
+        return this.entries[key] || undefined;
     },
-    put(key: string, value: any) {
+    put(key: any, value: any) {
       // key, valueのマッピングを追加する(keyが存在する場合はvalueを上書きする)
+      if (this.entries[key] === undefined) {
+        this.size += 1; // 新しいマッピングが追加された場合、サイズを増やす
+      }
+      this.entries[key] = value; // keyにvalueをマッピングする
     },
-    remove(key: string) {
+    remove(key: any) {
       // keyのマッピングを削除する
+      if (this.entries[key] !== undefined) {
+        this.size -= 1; // マッピングが削除された場合、サイズを減らす
+      }
+      this.entries[key] = undefined; // keyのマッピングを削除する
     },
   };
 }
@@ -33,3 +41,5 @@ function sample() {
   console.log(`key2=${hashTable.get("key2")}`); // => key2=undefined
   console.log(`size=${hashTable.size}`); // => size=1
 }
+
+sample();

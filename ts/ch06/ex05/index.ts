@@ -32,6 +32,16 @@ for (const key in object2) {
     console.log(`key: ${key}, value: ${object2[key]}`);
 }
 
+// 出力結果
+// key: 1, value: 100
+// key: 2, value: 2
+// key: text1, value: new text1
+// key: world, value: World
+// key: text2, value: new text2
+// key: 3, value: 3
+// key: hello, value: Hello
+// key: text3, value: text3
+
 // 独自プロパティの数値（数値の小さい順）
 // 独自プロパティの文字列（登録順）
 // プロトタイプオブジェクトの数値（数値の小さい順）

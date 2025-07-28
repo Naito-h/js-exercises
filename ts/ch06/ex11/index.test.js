@@ -1,34 +1,45 @@
-import { polarCoordinates } from './index.ts'; // ファイルパスに応じて修正してください
+import { PolarCoordinates } from './index.ts';
 
-describe('polarCoordinates', () => {
-    beforeEach(() => {
-        // 初期状態にリセット
-        polarCoordinates.r = 2;
-        polarCoordinates.theta = Math.PI / 2;
+describe('PolarCoordinates', () => {
+    test('初期化時にrとthetaからxとyを正しく計算する', () => {
+        const point = new PolarCoordinates(1, Math.PI / 4);
+        const expectedX = point.r * Math.cos(point.theta);
+        const expectedY = point.r * Math.sin(point.theta);
+        expect(point.x).toBeCloseTo(expectedX);
+        expect(point.y).toBeCloseTo(expectedY);
     });
 
-    test('initial x and y values are correct', () => {
-        expect(polarCoordinates.x).toBeCloseTo(0);
-        expect(polarCoordinates.y).toBeCloseTo(2);
+    test('xを設定するとrとthetaが更新される', () => {
+        const point = new PolarCoordinates(1, Math.PI / 4);
+        point.x = 2;
+        
+        const expectedY = point.r * Math.sin(point.theta); // 更新後の y を計算
+        expect(point.y).toBeCloseTo(expectedY);
+        expect(point.r).toBeCloseTo(Math.hypot(2, expectedY));
+        expect(point.theta).toBeCloseTo(Math.atan2(expectedY, 2));
     });
 
-    test('setting y updates r and theta correctly', () => {
-        polarCoordinates.y = 1;
-        expect(polarCoordinates.y).toBeCloseTo(1);
-        expect(polarCoordinates.x).toBeCloseTo(0); // x remains unchanged
-        expect(polarCoordinates.r).toBeCloseTo(Math.hypot(0, 1));
-        expect(polarCoordinates.theta).toBeCloseTo(Math.atan2(1, 0));
+    test('yを設定するとrとthetaが更新される', () => {
+        const point = new PolarCoordinates(1, Math.PI / 4);
+        point.y = 2;
+        const expectedX = point.r * Math.cos(point.theta); // 更新後の x を計算
+        expect(point.x).toBeCloseTo(expectedX);
+        expect(point.r).toBeCloseTo(Math.hypot(expectedX, 2));
+        expect(point.theta).toBeCloseTo(Math.atan2(2, expectedX));
     });
 
-    test('setting x with non-number throws error', () => {
-        expect(() => {
-            polarCoordinates.x = 'invalid';
-        }).toThrow("must be a number");
+    test('xにNaNを設定するとエラー', () => {
+        const point = new PolarCoordinates(1, Math.PI / 4);
+        expect(() => { point.x = NaN; }).toThrow("must be a number");
     });
 
-    test('setting y with non-number throws error', () => {
-        expect(() => {
-            polarCoordinates.y = null;
-        }).toThrow("must be a number");
+    test('yにNaNを設定するとエラー', () => {
+        const point = new PolarCoordinates(1, Math.PI / 4);
+        expect(() => { point.y = NaN; }).toThrow("must be a number");
+    });
+
+    test('初期化時にNaNを渡すとエラー', () => {
+        expect(() => new PolarCoordinates(NaN, 0)).toThrow("r and theta must be numbers");
+        expect(() => new PolarCoordinates(1, NaN)).toThrow("r and theta must be numbers");
     });
 });
