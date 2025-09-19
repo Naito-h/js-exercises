@@ -6,7 +6,8 @@ describe("TypeMap test", () => {
       ["one", "1"],
       ["two", "2"],
     ]);
-    expect(map).toBeInstanceOf(TypeMap);
+    expect(map.get("one")).toBe("1");
+    expect(map.get("two")).toBe("2");
   });
 
   it("コンストラクタで不正な型の初期値を設定するとエラーをスローする", () => {

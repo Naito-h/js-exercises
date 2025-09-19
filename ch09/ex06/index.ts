@@ -31,6 +31,38 @@ export class TypeMap {
         this.#map.set(key, value);
         return this;
     }
+
+    get(key: string): string | undefined {
+        return this.#map.get(key);
+    }
+
+    has(key: string): boolean {
+        return this.#map.has(key);
+    }
+
+    delete(key: string): boolean {
+        return this.#map.delete(key);
+    }
+
+    clear(): void {
+        this.#map.clear();
+    }
+
+    get size(): number {
+        return this.#map.size;
+    }
+
+    entries(): IterableIterator<[string, string]> {
+        return this.#map.entries();
+    }
+
+    keys(): IterableIterator<string> {
+        return this.#map.keys();
+    }
+    
+    values(): IterableIterator<string> {
+        return this.#map.values();
+    }
 }
 
 const typemMap = new TypeMap("string", "string", [["one", "1"], ["two", "2"]]);

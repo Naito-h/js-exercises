@@ -1,3 +1,22 @@
+// 再帰
+export const powerRec = (x: number, n: number): number => {
+    // 負の値のときはエラーを投げる
+    if (n < 0) {
+        throw new Error("正の整数を指定してください");
+    }
+
+    // 実装する
+
+    return n === 0 ? 1 : (n % 2 === 1 ? x * powerRec(x, n - 1) : powerRec(x * x, n / 2));
+};
+
+console.log(powerRec(2, 8)); // 256
+console.log(powerRec(2, 11)); // 2048
+console.log(powerRec(2, 0)); // 1
+// console.log(powerRec(2, -3)); // Error: 正の整数を指定してください
+
+
+// ループ
 export const power = (x: number, n: number): number => {
     let result = 1;
 

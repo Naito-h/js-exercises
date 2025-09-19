@@ -14,7 +14,8 @@
 
 const args: any[] = [];
 function call(...x: any[]) {
-  args.push(Array.from(x));
+  // args.push(Array.from(x));
+  args.push(x); // スプレッド構文を使う場合はArray.fromは不要
 }
 
 call(1, 2, 3);

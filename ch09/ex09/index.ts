@@ -1,13 +1,13 @@
 // インターフェース分離の原則 (Interface Segregation Principle, ISP)
 
 // 原則を満たさないコード
-interface animal {
+interface Animal {
     name: string;
     run(): void;
     fly(): void;
 }
 
-class Dog implements animal {
+class Dog implements Animal {
     name: string;
     constructor(name: string) {
         this.name = name;
@@ -22,19 +22,19 @@ class Dog implements animal {
 
 
 // 原則を満たすコード
-interface animal2 {
+interface Animal2 {
     name: string;
 }
 
-interface runningAnimal extends animal2 {
+interface RunningAnimal extends Animal2 {
     run(): void;
 }
 
-interface flyingAnimal extends animal2 {
+interface FlyingAnimal extends Animal2 {
     fly(): void;
 }
 
-class Dog2 implements runningAnimal {
+class Dog2 implements RunningAnimal {
     name: string;
     constructor(name: string) {
         this.name = name;

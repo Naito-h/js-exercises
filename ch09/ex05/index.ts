@@ -1,5 +1,5 @@
 export function instanceOf(object: any, constructor: Function): boolean {
-    if (object == null || typeof object !== "object") {
+    if (object === null || typeof object !== "object") {
         return false;
     }
     let proto = Object.getPrototypeOf(object);

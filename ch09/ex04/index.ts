@@ -1,22 +1,24 @@
 // classを使った記法
+// 戦士クラス
 export class Warrior {
-    atk: number;
+    #atk: number;
     constructor(atk: number) {
-        this.atk = atk;
+        this.#atk = atk;
     }
     attack(): number {
-        return this.atk * 2;
+        return this.#atk * 2;
     }
 }
 
+// 魔法戦士クラス
 export class MagicWarrior extends Warrior {
-    mgc: number;
+    #mgc: number;
     constructor(atk: number, mgc: number) {
         super(atk);
-        this.mgc = mgc;
+        this.#mgc = mgc;
     }
     attack(): number {
-        return super.attack() + this.mgc;
+        return super.attack() + this.#mgc;
     }
 }
 
@@ -28,15 +30,16 @@ console.log("MagicWarrior attack:", magicWarrior.attack()); // 25
 
 
 // prototypeを使った記法
+// 戦士クラス
 export function Warrior2(this: any, atk: number): void {
-    let r = Object.create(Warrior2.prototype);
-    r.atk = atk;
-    r.attack = function (): number {
-        return this.atk * 2;
-    };
-    return r;
+    this.atk = atk;
 };
 
+Warrior2.prototype.attack = function (this: any): number {
+    return this.atk * 2;
+};
+
+// 魔法戦士クラス
 export function MagicWarrior2(this: any, atk: number, mgc: number): void {
     this.atk = atk;
     this.mgc = mgc;
