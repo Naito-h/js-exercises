@@ -21,7 +21,7 @@ export function stringifyJSON(json: any): string {
 
   // array の場合は各要素を再帰的に処理してから [] で囲んで返す
   if (Array.isArray(json)) {
-    return "[" + json.map(v => stringifyJSON(v === undefined ? null : v)).join(",") + "]";
+    return "[" + json.map(v => stringifyJSON(v)).join(",") + "]";
   }
 
   // object の場合は各キーと値を再帰的に処理してから {} で囲んで返す
@@ -31,5 +31,5 @@ export function stringifyJSON(json: any): string {
   }
 
   // その他の場合はエラーをスローする
-  throw new Error("Not implemented yet");
+  throw new Error("サポートされていない型です");
 }
