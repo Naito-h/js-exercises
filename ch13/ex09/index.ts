@@ -133,4 +133,4 @@ async function i4_fixed() {
   await Promise.all([p1(), p2()]);
   log(v);
 }
-i4_fixed();
+// i4_fixed();

@@ -2,25 +2,22 @@ export async function retryWithExponentialBackoff<T>(func: () => Promise<T>, max
     let retryCount = 0; // リトライ回数
     let delay = 1000; // 1000ミリ秒（1秒）
 
-    return new Promise<T>((resolve, reject) => {
-        const attempt = async () => {
-            await func()
-                .then((result) => {
-                    resolve(result);
-                })
-                .catch((error) => {
-                    // 最大リトライ回数に達したら reject を呼んで終了
-                    if (retryCount >= maxRetry) {
-                        reject(error);
-                        return;
-                    }
-                    retryCount++;
-                    delay *= 2; // 次の遅延時間を2倍にする
-                    setTimeout(attempt, delay);
-                });
-        };
-        attempt();
-    });
+    const attempt = async (): Promise<T> => {
+        try {
+            const result = await func();
+            return result;
+        } catch (error) {
+            if (retryCount >= maxRetry) {
+                throw error;
+            }
+        }
+        retryCount++;
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        delay *= 2; // 次の遅延時間を2倍にする
+        return attempt();
+    };
+
+    return attempt();
 }
 
 // // 成功する関数

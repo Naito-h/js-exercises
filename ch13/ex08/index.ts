@@ -2,6 +2,9 @@ import * as fs from 'node:fs/promises';
 
 export async function fetchFirstFileSize(path: string): Promise<number> {
     const files = await fs.readdir(path);
+    if (files.length === 0) {
+        return 0;
+    }
     const stats = await fs.stat(`${path}/${files[0]}`);
     return stats.size;
 }

@@ -14,17 +14,12 @@ function g1(): Promise<void> {
 // g1();
 
 function g2(): Promise<void> {
-    return wait(1000).then(() => {
-        console.log("A");
-    }).then(() => {
-        return wait(2000);
-    }).then(() => {
-        console.log("B");
-    }).then(() => {
-        return wait(3000);
-    }).then(() => {
-        console.log("C");
-    });
+    return wait(1000)
+        .then(() => console.log("A"))
+        .then(() => wait(2000))
+        .then(() => console.log("B"))
+        .then(() => wait(3000))
+        .then(() => console.log("C"));
 }
 // g2();
 
