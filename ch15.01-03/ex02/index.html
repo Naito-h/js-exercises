@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>Import Test</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="module">
+        const button = document.querySelector("#myButton");
+        button.addEventListener("click", async () => {
+            const { $ } = await import(
+                "https://releases.jquery.com/git/jquery-git.module.min.js"
+            );
+            $("*").css("color", "red");
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Hello, world!</h1>
+    <button id="myButton">Click</button>
+    <p>This text should be red.</p>
+</body>
+
+</html>
