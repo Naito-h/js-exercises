@@ -4,6 +4,8 @@ const input = document.querySelector("#new-todo");
 
 form.addEventListener("submit", (e) => {
   // TODO: ここで form のイベントのキャンセルを実施しなさい (なぜでしょう？)
+  // フォームを送信するとページがリロードされてしまうため
+  // ページのリロードを防ぐためにイベントをキャンセルする
   e.preventDefault();
 
   // 両端からホワイトスペースを取り除いた文字列を取得する

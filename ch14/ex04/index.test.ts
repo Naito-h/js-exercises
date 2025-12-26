@@ -17,4 +17,11 @@ describe("Hiragana", () => {
         expect(() => new Hiragana("あい")).toThrow("1文字のみ指定してください。");
         expect(() => new Hiragana("あいう")).toThrow("1文字のみ指定してください。");
     });
+    // toPrimitive のテストを追加
+    test("型変換", () => {
+        const a = new Hiragana("い");
+        expect(String(a)).toBe("い");
+        expect(Number(a)).toBe("い".charCodeAt(0));
+        expect(a + "").toBe("い");
+    });
 });
