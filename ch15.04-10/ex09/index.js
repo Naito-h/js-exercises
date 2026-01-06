@@ -48,7 +48,7 @@ document.getElementById("image").addEventListener("change", (event) => {
       [4, 16, 24, 16, 4],
       [6, 24, 36, 24, 6],
       [4, 16, 24, 16, 4],
-      [1, 4, 6, 4, 1]  // 5行目を追加
+      [1, 4, 6, 4, 1]
     ];
     const kernelSize = 5;
     const kernelSum = 256; // カーネルの値の合計（正規化用）
