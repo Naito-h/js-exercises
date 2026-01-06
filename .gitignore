@@ -1,5 +1,7 @@
 node_modules
 *.js
 !ch15.01-03/**/*.js
+!ch15.04-10/**/*.js
+!ch15.11-15/**/*.js
 test-results
 *.tsbuildinfo

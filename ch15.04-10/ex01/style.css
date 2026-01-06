@@ -1,3 +1,140 @@
+/* LINE風のスタイル */
+* {
+  box-sizing: border-box; /* ボックスのサイズ計算を枠線込みに */
+}
+
+/* 全体のスタイル */
+/* フォントをシステムフォントに設定、背景色 #F8F8F8、最大幅 600px で中央に配置 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; /* システムフォント */
+  background-color: #F8F8F8; /* 背景色を白っぽい色に */
+  margin: 0; /* 外側の余白を0に */
+  padding: 20px; /* 内側の余白 */
+  max-width: 600px; /* 最大幅 600px */
+  margin: 0 auto; /* 中央に配置 */
+}
+
+/* 入力フォームのスタイル */
+#new-todo-form {
+  display: flex; /* フレックスボックスで配置 */
+  gap: 10px; /* アイテム間の隙間 */
+  margin-bottom: 20px; /* フォーム下の余白 */
+  padding: 15px; /* 内側の余白 */
+  background-color: white; /* 背景色を白に設定 */
+  border-radius: 12px; /* 角を丸く */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 影を付ける */
+}
+
+/* テキスト入力フィールドのスタイル */
+#new-todo {
+  flex: 1; /* フレックスで広げる */
+  padding: 12px 16px; /* 内側の余白 */
+  border: 2px solid #E5E5E5; /* 薄いグレーの枠線 */
+  border-radius: 8px; /* 角を丸く */
+  font-size: 14px; /* フォントサイズ 14px */
+  outline: none; /* フォーカス時の青い枠線を無効化 */
+  transition: border-color 0.2s; /* 枠線の変化を滑らかに */
+}
+
+/* フォーカス時のスタイル */
+#new-todo:focus {
+  border-color: #06C755; /* 枠線を緑色にする */
+}
+
+/* 追加ボタンのスタイル */
+#new-todo-form button {
+  padding: 12px 24px; /* 内側の余白 */
+  background-color: #06C755; /* 背景色を緑 */
+  color: white; /* 文字を白 */
+  border: none; /* 境界線なし */
+  border-radius: 8px; /* 角を丸く */
+  font-size: 14px; /* フォントサイズ 14px */
+  font-weight: bold; /* 太字 */
+  cursor: pointer; /* カーソルを合わせたときに指マークにする */
+  transition: background-color 0.2s; /* 背景色の変化を滑らかに */
+}
+
+/* 追加ボタンのホバー時のスタイル */
+#new-todo-form button:hover {
+  background-color: #05B34A; /* 少し濃い緑に変更 */
+}
+
+/* 追加ボタンのアクティブ時のスタイル（押しているとき） */
+#new-todo-form button:active {
+  background-color: #049F41; /* さらに濃い緑に変更 */
+}
+
+/* ToDoリストのスタイル */
+#todo-list {
+  list-style: none; /* デフォルトのリストスタイルを無効化 */
+  padding: 0; /* 内側の余白を0に */
+  margin: 0; /* 外側の余白を0に */
+}
+
+/* ToDoリストのアイテムのスタイル */
+#todo-list li {
+  background-color: white; /* 背景色を白に設定 */
+  margin-bottom: 8px; /* アイテム下の余白 */
+  border-radius: 12px; /* 角を丸く */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); /* 影を付ける */
+  transition: transform 0.2s, box-shadow 0.2s; /* 影の変化を滑らかに */
+}
+
+/* ToDoリストのアイテムのホバー時のスタイル */
+#todo-list li:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); /* 影を濃くする */
+}
+
+/* ToDoリストのアイテムのアクティブ時のスタイル（押しているとき） */
+.view {
+  display: flex; /* フレックスボックスで配置 */
+  align-items: center; /* 垂直方向に中央揃え */
+  padding: 16px; /* 内側の余白 */
+  gap: 12px; /* アイテム間の隙間 */
+}
+
+/* チェックボックスのスタイル */
+.toggle {
+  width: 22px; /* 幅 22px */
+  height: 22px; /* 高さ 22px */
+  cursor: pointer; /* カーソルを合わせたときに指マークにする */
+  accent-color: #06C755; /* チェックボックスの色を緑に */
+  flex-shrink: 0; /* サイズを固定 */
+}
+
+/* ToDoアイテムのテキストスタイル */
+.content {
+  flex: 1; /* フレックスで広げる */
+  font-size: 15px; /* フォントサイズ 15px */
+  color: #333; /* 文字色を濃いグレーに */
+  cursor: pointer; /* カーソルを合わせたときに指マークにする */
+  user-select: none; /* テキストの選択を無効化 */
+}
+
+/* 削除ボタンのスタイル */
+.destroy {
+  background: none; /* 背景なし */
+  border: none; /* 境界線なし */
+  font-size: 18px; /* フォントサイズ 18px */
+  cursor: pointer; /* カーソルを合わせたときに指マークにする */
+  padding: 4px 8px; /* 内側の余白 */
+  border-radius: 6px; /* 角を丸く */
+  transition: background-color 0.2s; /* 背景色の変化を滑らかに */
+  flex-shrink: 0; /* サイズを固定 */
+}
+
+/* 削除ボタンのホバー時のスタイル */
+.destroy:hover {
+  background-color: #F0F0F0; /* 背景色をグレーに */
+}
+
+/* 完了したToDoアイテムのスタイル */
 .completed {
-  text-decoration: line-through;
+  opacity: 0.6; /* 少し薄く表示 */
+}
+
+/* 完了したToDoアイテムのテキストスタイル */
+.completed .content {
+  text-decoration: line-through; /* 取り消し線 */
+  color: #999; /* 色を薄く */
 }
