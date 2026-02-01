@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>OneDrive Upload</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="module" src="/ch15.11-15/ex11/index.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+      
+      div {
+        margin-bottom: 15px;
+      }
+      
+      input[type="file"],
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      button {
+        background-color: #0078d4;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      button:hover:not(:disabled) {
+        background-color: #106ebe;
+      }
+      
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="file" type="file" />
+    </div>
+    <div>
+      <input id="token" type="text" placeholder="アクセストークンを入力してください" />
+    </div>
+    <div>
+      <button id="upload">アップロード</button>
+    </div>
+  </body>
+</html>

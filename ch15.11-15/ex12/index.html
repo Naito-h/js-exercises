@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <title>Chat Application</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script type="module" src="/ch15.11-15/ex12/index.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+
+      #content {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        height: 300px;
+        overflow-y: auto;
+        margin-bottom: 15px;
+      }
+
+      input[type="text"] {
+        width: 80%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        background-color: #0078d4;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover:not(:disabled) {
+        background-color: #106ebe;
+      }
+
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      .my-message {
+        text-align: right;
+        background-color: lightblue;
+        padding: 5px;
+        border-radius: 4px;
+        width: fit-content;
+        margin-left: auto;
+      }
+
+      .bot-message {
+        text-align: left;
+        background-color: lightgreen;
+        padding: 5px;
+        border-radius: 4px;
+        width: fit-content;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="content"></div>
+    <div>
+      <input id="message" type="text" placeholder="メッセージを入力..." />
+      <button id="submit">送信</button>
+    </div>
+  </body>
+
+</html>
