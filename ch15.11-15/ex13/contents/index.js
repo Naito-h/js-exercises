@@ -17,7 +17,7 @@ async function getMessageFromServer() {
   button.disabled = true;
 
   // EventSource を使ってサーバーからのイベントを受け取れるようにする
-  let chat = new EventSource("http://localhost:3000/message");
+  const chat = new EventSource("http://localhost:3000/message");
 
   // サーバーからのメッセージを受け取ったときの処理
   chat.addEventListener("message", (event) => {

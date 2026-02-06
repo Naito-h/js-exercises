@@ -49,6 +49,8 @@ function cspMiddleware(_url, req, res) {
   // 'unsafe-inline' を含める → index.html の inline script が動作する
   // hello.js の URL を含める → hello.js が動作する
   res.setHeader("Content-Security-Policy", "script-src 'unsafe-inline' http://localhost:3000/hello.js;");
+  // unsafe-inline はセキュリティ上好ましくない
+  // sha256 でハッシュを生成する方式がより安全
   return true;
 }
 

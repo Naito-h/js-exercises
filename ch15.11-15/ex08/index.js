@@ -8,8 +8,13 @@ const button = document.querySelector("#send");
 
 let socket = new WebSocket("ws://localhost:3003/");
 
+let requestIdCounter = 1;
+
 // 各リクエストの状態を管理するマップ
 const state = new Map();
+
+// リクエストIDを保持する変数
+let requestId1, requestId2, requestId3;
 
 // 送信ボタンがクリックされたらリクエストを送信する
 button.onclick = (e) => {
@@ -17,7 +22,7 @@ button.onclick = (e) => {
     e.preventDefault();
 
     // リクエスト1を送信
-    const requestId1 = 123;
+    requestId1 = requestIdCounter++;
     socket.send(JSON.stringify({ "requestId": requestId1, "type": "request", "payload": payload1.value }));
     response1.textContent = "Loading...";
     state.set(requestId1, "pending"); // 状態を pending に設定
@@ -32,7 +37,7 @@ button.onclick = (e) => {
     }, 3000);
 
     // リクエスト2を送信
-    const requestId2 = 456;
+    requestId2 = requestIdCounter++;
     socket.send(JSON.stringify({ "requestId": requestId2, "type": "request", "payload": payload2.value }));
     response2.textContent = "Loading...";
     state.set(requestId2, "pending"); // 状態を pending に設定
@@ -47,7 +52,7 @@ button.onclick = (e) => {
     }, 3000);
 
     // リクエスト3を送信
-    const requestId3 = 789;
+    requestId3 = requestIdCounter++;
     socket.send(JSON.stringify({ "requestId": requestId3, "type": "request", "payload": payload3.value }));
     response3.textContent = "Loading...";
     state.set(requestId3, "pending"); // 状態を pending に設定
@@ -81,11 +86,13 @@ socket.onmessage = (event) => {
 
 // 接続が閉じられたら全ての未完了リクエストを closed に設定する
 socket.onclose = (event) => {
-    // 全ての状態を closed に設定
-    state.forEach((_, key) => {
-        const response = { requestId: key, type: "error", payload: "Connection closed" };
-        setResponseText(response);
-        state.set(key, "closed"); // 状態を closed に設定
+    // pending 状態のものだけを closed に設定
+    state.forEach((value, key) => {
+        if (value === "pending") {
+            const response = { requestId: key, type: "error", payload: "Connection closed" };
+            setResponseText(response);
+            state.set(key, "closed"); // 状態を closed に設定
+        }
     });
 }
 
@@ -102,17 +109,11 @@ function setResponseText(response) {
     }
 
     // id に応じて表示する要素を切り替え
-    switch (response.requestId) {
-        case 123:
-            response1.textContent = response.payload;
-            break;
-        case 456:
-            response2.textContent = response.payload;
-            break;
-        case 789:
-            response3.textContent = response.payload;
-            break;
-        default:
-            break;
+    if (response.requestId === requestId1) {
+        response1.textContent = response.payload;
+    } else if (response.requestId === requestId2) {
+        response2.textContent = response.payload;
+    } else if (response.requestId === requestId3) {
+        response3.textContent = response.payload;
     }
 }

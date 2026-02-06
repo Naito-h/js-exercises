@@ -83,3 +83,17 @@ form.addEventListener("submit", (e) => {
   const todoElem = createToDoElement(newTodo);
   list.appendChild(todoElem);
 });
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    // ローカルストレージから ToDo を取得
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+    // ToDo リストをクリアしてから再度追加する
+    list.innerHTML = "";
+    todos.forEach((todo) => {
+      const todoElem = createToDoElement(todo);
+      list.appendChild(todoElem);
+    });
+  }
+});
