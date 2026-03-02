@@ -10,16 +10,28 @@ export default {
   // TypeScriptおよびJavaScriptファイルの変換設定
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {
-      useESM: true
+      useESM: true,
+      tsconfig: {
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true
+      }
     }],
     '^.+\\.jsx?$': ['ts-jest', {
-      useESM: true
+      useESM: true,
+      tsconfig: {
+        esModuleInterop: true,
+        allowSyntheticDefaultImports: true
+      }
     }]
   },
   // モジュール名のマッピング（.tsファイルのインポートを許可）
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
+  // Express などの ES モジュールを変換
+  transformIgnorePatterns: [
+    'node_modules/(?!(express)/)'
+  ],
   // see default value: https://jestjs.io/docs/configuration#testmatch-arraystring
   testMatch: ["**/?(*.)+(test).(cjs|[jt]s?(x))"],
 } satisfies JestConfigWithTsJest;
