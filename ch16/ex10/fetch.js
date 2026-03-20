@@ -4,22 +4,18 @@ import fs from "fs";
 const beforeMemoryUsage = process.memoryUsage().heapUsed;
 console.log("Before:", beforeMemoryUsage, "bytes");
 
-const fileContent = await fs.readFileSync("./ch16/ex10/kokoro.txt");
-// const fileContent = fs.createReadStream("./ch16/ex10/kokoro.txt");
-
-await fetch("http://localhost:8000/output.txt", {
+// NOTE: file.txt の内容をアップロード
+fetch("http://localhost:8000/hello.txt", {
   method: "PUT",
-  body: fileContent,
+  body: fs.createReadStream("./ch16/ex10/file.txt"),
   duplex: "half",
-}).then(response => {
-  if (response.ok) {
-    console.log("ファイルが正常にアップロードされました");
-  } else {
-    console.error("ファイルのアップロードに失敗しました:", response.statusText);
-  }
-}).catch(error => {
-  console.error("エラー:", error);
 });
+
+// fetch("http://localhost:8000/foo/bar/hello.txt", {
+//   method: "PUT",
+//   body: fs.readFileSync("./ch16/ex10/file.txt"),
+//   duplex: "half",
+// });
 
 // fetch 完了後に計測することで、実際のファイル読み込み中のメモリ使用量を反映できる
 console.log("After:", process.memoryUsage().heapUsed, "bytes");

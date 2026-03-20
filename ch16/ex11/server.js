@@ -73,18 +73,18 @@ export function startServer() {
         socket.write("Content-Type: text/html; charset=utf-8\r\n");
         socket.write("\r\n");
         socket.write(`
-        <!doctype html>
-        <html lang="ja">
-          <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Greeting Result</title>
-          </head>
-          <body>
-              <h1>${greeting}, ${name}!</h1>
-          </body>
-        </html>
-      `);
+          <!doctype html>
+          <html lang="ja">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Greeting Result</title>
+            </head>
+            <body>
+                <h1>${greeting}, ${name}!</h1>
+            </body>
+          </html>
+        `);
         socket.end();
       } else {
         // それ以外のリクエストには 404 Not Found を返す

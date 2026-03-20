@@ -13,14 +13,20 @@ if (threads.isMainThread) {
 
     // ワーカーからのメッセージを待ち、受信したら num をインクリメントして出力する
     worker.on("message", (message) => {
-      for (let i = 0; i < 10_000_000; i++) {
+      if (message === "increment") {
         num++;
+      } else if (message === "done") {
+        console.log("num: " + num); // num: 20000000
       }
-      console.log("num: " + num); // num: 20000000
     });
   });
 } else {
   // "num をインクリメントせよ"というメッセージを送る
+  for (let i = 0; i < 10_000_000; i++) {
+    threads.parentPort.postMessage("increment");
+  }
+
+  // ワーカーはメッセージを送った後、終了する
   threads.parentPort.postMessage("done");
 }
 
