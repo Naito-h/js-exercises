@@ -1,0 +1,130 @@
+/* ── 全体レイアウト ── */
+#header {
+  max-width: 480px;
+  margin: 48px auto 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 24px;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+#main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ── 入力フォーム ── */
+#new-todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+#new-todo {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:focus {
+    border-color: #646cff;
+    box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.15);
+  }
+}
+
+#new-todo-form button {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  background: #646cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+
+  &:hover {
+    background: #535bf2;
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+/* ── TODOリスト ── */
+#todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  transition: box-shadow 0.15s, border-color 0.15s;
+
+  &:hover {
+    border-color: #d0d0d0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* ── チェックボックス ── */
+#todo-list input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #646cff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── ラベル ── */
+#todo-list label {
+  flex: 1;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* ── 削除ボタン ── */
+#todo-list button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  opacity: 0.4;
+  transition: opacity 0.15s, background 0.15s;
+
+  &:hover {
+    opacity: 1;
+    background: #fee;
+  }
+}
+
+#todo-list li:hover button {
+  opacity: 0.7;
+}

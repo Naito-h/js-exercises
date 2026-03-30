@@ -7,3 +7,4 @@ node_modules
 !ch17/**/*.js
 test-results
 *.tsbuildinfo
+.env

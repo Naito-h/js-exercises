@@ -1,3 +1,5 @@
+// npm run flow:run:file で実行する
+
 import {
   TaskManager,
   isLowOrCompletedTask,

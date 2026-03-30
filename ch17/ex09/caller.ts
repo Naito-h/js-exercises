@@ -1,3 +1,5 @@
+// npm run ts .\ex09\caller.ts で実行する
+
 import {
   PriorityTask,
   TaskManager,
